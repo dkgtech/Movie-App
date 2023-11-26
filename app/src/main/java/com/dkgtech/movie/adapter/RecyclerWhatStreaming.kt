@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dkgtech.movie.databinding.GetWhatsStreamingRowBinding
 import com.dkgtech.movie.model.Edge
-import com.dkgtech.movie.model.Title
 import com.squareup.picasso.Picasso
 
 class RecyclerWhatStreaming(val context: Context, val arrData: ArrayList<Edge>) :
@@ -34,6 +33,7 @@ class RecyclerWhatStreaming(val context: Context, val arrData: ArrayList<Edge>) 
         with(holder.binding) {
             val data = arrData[position]
             Picasso.get().load(data.title.primaryImage.imageUrl).into(imgThumbnail)
+            txtTitle.text = data.title.titleText.text
         }
     }
 }

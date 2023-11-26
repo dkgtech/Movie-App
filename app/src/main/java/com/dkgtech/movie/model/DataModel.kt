@@ -88,3 +88,133 @@ data class TopRanking(
 data class Value(
     val plainText: String
 )
+
+data class WatchOptionsByCategory(
+    val categorizedWatchOptionsList: List<CategorizedWatchOptionsList>,
+)
+
+data class CategorizedWatchOptionsList(
+    val watchOptions: List<WatchOption>,
+)
+
+data class WatchOption(
+    val provider: Provider,
+    val title: Title,
+    val description: Description2,
+    val shortDescription: ShortDescription?,
+    val link: String,
+)
+
+data class Provider(
+    val id: String,
+    val categoryType: String,
+    val description: Description?,
+    val name: Name,
+    val refTagFragment: String,
+    val logos: Logos,
+)
+
+data class Description(
+    val value: String,
+)
+
+data class Name(
+    val value: String,
+)
+
+data class Logos(
+    val icon: Icon,
+    val slate: Slate,
+)
+
+data class Icon(
+    val url: String,
+    val width: Long,
+    val height: Long,
+)
+
+data class Slate(
+    val url: String,
+    val width: Long,
+    val height: Long,
+)
+
+data class Description2(
+    val value: String,
+)
+
+data class ShortDescription(
+    val value: String,
+)
+
+data class Plot(
+    val id: String,
+    val author: Any?,
+    val plotText: PlotText,
+    val correctionLink: CorrectionLink,
+    val reportingLink: ReportingLink,
+)
+
+data class PlotText(
+    val plainText: String,
+)
+
+data class CorrectionLink(
+    val url: String,
+)
+
+data class ReportingLink(
+    val url: String,
+)
+
+data class ReleaseDate(
+    val day: Long,
+    val month: Long,
+    val year: Long,
+    val country: Country,
+    val restriction: Any?,
+    val releaseAttributes: List<ReleaseAttribute>,
+)
+
+data class Country(
+    val id: String,
+    val text: String,
+)
+
+data class ReleaseAttribute(
+    val text: String,
+)
+
+data class TitleCertificate(
+    val rating: String,
+    val certificateCountry: CertificateCountry,
+    val ratingReason: String?,
+)
+
+data class CertificateCountry(
+    val id: String,
+    val text: String,
+)
+
+data class TitleRuntime(
+    val seconds: Long,
+    val displayableProperty: DisplayableProperty2,
+)
+
+data class DisplayableProperty2(
+    val qualifiersInMarkdownList: List<QualifiersInMarkdownList>?,
+)
+
+data class QualifiersInMarkdownList(
+    val plainText: String,
+)
+
+data class ChartMeterRanking(
+    val currentRank: Long,
+    val rankChange: RankChange,
+)
+
+data class RankChange(
+    val changeDirection: String,
+    val difference: Long,
+)

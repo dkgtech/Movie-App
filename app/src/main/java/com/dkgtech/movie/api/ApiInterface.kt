@@ -1,10 +1,10 @@
 package com.dkgtech.movie.api
 
 import com.dkgtech.movie.model.DataModel
-import com.dkgtech.movie.model.Title
 import retrofit2.Call
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.Headers
 import retrofit2.http.Query
 
@@ -17,6 +17,23 @@ interface ApiInterface {
     )
     fun getWhatsStreaming(
         @Query("country") country: String,
-        ): Call<DataModel>
+    ): Call<DataModel>
+
+    @GET("getWeekTop10")
+    fun getWeeklyTop10Movies(): Call<DataModel>
+
+
+    companion object {
+        const val BASE_URL = "https://imdb188.p.rapidapi.com/api/v1/"
+
+        fun create(): ApiInterface {
+            val retrofit =
+                Retrofit.Builder().baseUrl(BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+            return retrofit.create(ApiInterface::class.java)
+        }
+
+    }
 
 }
